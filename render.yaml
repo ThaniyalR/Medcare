@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: nutrix-demo
+    runtime: python
+    plan: free
+    buildCommand: python --version
+    startCommand: python server.py
+    healthCheckPath: /api/config
+    envVars:
+      - key: APP_ENV
+        value: demo
+      - key: HOST
+        value: 0.0.0.0
+      - key: ALLOW_LOCAL_OTP
+        value: "false"
+      - key: SKIP_PHONE_VERIFICATION
+        value: "true"
+      - key: ADMIN_REVIEW_KEY
+        generateValue: true

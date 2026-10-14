@@ -157,7 +157,7 @@ def local_otp_allowed() -> bool:
 
 
 def phone_verification_skipped() -> bool:
-    return APP_ENV == "development" and setting("SKIP_PHONE_VERIFICATION").lower() == "true"
+    return APP_ENV in ("development", "demo") and setting("SKIP_PHONE_VERIFICATION").lower() == "true"
 
 
 def provider_post(url: str, fields: dict[str, str], username: str, password: str) -> dict:
@@ -569,7 +569,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_json(200, {"user": public_user(row)}, {"Set-Cookie": self.session_cookie(token)})
 
     def session_cookie(self, token: str) -> str:
-        secure = "; Secure" if APP_ENV == "production" else ""
+        secure = "; Secure" if APP_ENV in ("demo", "production") else ""
         return f"{COOKIE_NAME}={token}; HttpOnly; SameSite=Strict; Path=/; Max-Age={SESSION_DAYS * 86400}{secure}"
 
     def logout(self) -> None:
@@ -825,6 +825,12 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def validate_startup() -> None:
+    if APP_ENV not in ("development", "demo", "production"):
+        raise SystemExit("APP_ENV must be development, demo, or production.")
+    if APP_ENV == "demo":
+        if setting("SKIP_PHONE_VERIFICATION").lower() != "true":
+            raise SystemExit("Demo mode requires SKIP_PHONE_VERIFICATION=true.")
+        print("WARNING: Public demo mode is for fictional data only. Do not enter real patient information.", flush=True)
     if APP_ENV == "production":
         if setting("SKIP_PHONE_VERIFICATION").lower() == "true":
             raise SystemExit("Phone verification cannot be skipped in production.")
@@ -842,7 +848,7 @@ def validate_startup() -> None:
     if APP_ENV != "production" and local_otp_allowed():
         print("WARNING: Development OTPs are printed to this terminal. Do not use real patient information.", flush=True)
     if phone_verification_skipped():
-        print("WARNING: Phone verification is disabled for local development. Do not use real accounts or patient information.", flush=True)
+        print("WARNING: Phone verification is disabled in demo mode. Do not use real accounts or patient information.", flush=True)
 
 
 if __name__ == "__main__":
@@ -853,4 +859,4 @@ if __name__ == "__main__":
     validate_startup()
     init_db()
     print(f"Nutrix is ready at http://127.0.0.1:{PORT} ({APP_ENV})", flush=True)
-    ThreadingHTTPServer(("127.0.0.1", PORT), Handler).serve_forever()
+    ThreadingHTTPServer((setting("HOST", "127.0.0.1"), PORT), Handler).serve_forever()
