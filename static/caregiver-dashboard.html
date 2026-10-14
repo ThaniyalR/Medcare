@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#12352d"><title>Care team | Nutrix</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body data-page="caregiver">
+  <div class="workspace">
+    <aside class="sidebar">
+      <a class="brand" href="/"><span class="brand-mark">n<span>+</span></span><span>nutrix</span></a>
+      <span class="side-label">CARE WORKSPACE</span>
+      <nav class="side-nav"><a class="selected" href="/caregiver-dashboard.html"><span>⌂</span> Overview</a><a href="#requests"><span>▦</span> Care requests</a><a href="#credentials"><span>✓</span> My credentials</a></nav>
+      <div class="sidebar-bottom"><div class="care-note"><span class="live-dot"></span> Care with confidence.<p>Only approved professionals can accept a care request.</p></div><div class="sidebar-user"><span class="user-avatar" id="user-avatar">—</span><span><strong id="user-name">Loading…</strong><small id="user-role">Care professional</small></span></div></div>
+    </aside>
+    <main class="workspace-main">
+      <header class="workspace-top"><div><span class="crumb">Care workspace</span><span class="crumb-divider">/</span><strong>Overview</strong></div><button class="button quiet" data-logout>Sign out</button></header>
+      <section class="dashboard-content">
+        <div id="dashboard-message" class="message" role="status" hidden></div>
+        <div class="dashboard-heading"><div><span class="eyebrow">YOUR CARE WORKSPACE</span><h1 id="greeting">Welcome</h1><p>Find suitable care requests and keep your professional status up to date.</p></div></div>
+        <section id="review-pending" class="review-banner" hidden><span class="review-symbol">◷</span><div><strong>Professional verification in progress</strong><p><span id="phone-review-status">Your mobile number is verified.</span> A Nutrix administrator must check your <span id="credential-summary">professional credentials</span> before you can view patient-specific information or accept care work.</p></div></section>
+        <div class="privacy-banner"><span>◈</span><div><strong>Patient details are shared only after a verified caregiver accepts care.</strong><p>Open care requests hide personal information until you are assigned.</p></div></div>
+        <section class="summary-grid"><article class="summary-card"><span class="summary-symbol">▦</span><span class="summary-label">OPEN REQUESTS</span><strong id="open-count">—</strong><small>Requests matching your professional role</small></article><article class="summary-card"><span class="summary-symbol lavender">◷</span><span class="summary-label">YOUR CARE VISITS</span><strong id="assigned-count">—</strong><small>Confirmed assignments</small></article><article class="summary-card"><span class="summary-symbol peach">✓</span><span class="summary-label">PROFESSIONAL STATUS</span><strong id="review-status">—</strong><small id="phone-status">Mobile verification</small></article></section>
+        <div class="dashboard-grid single">
+          <section class="content-card" id="requests"><div class="card-heading"><div><span class="eyebrow">MATCHED TO YOUR ROLE</span><h2>Care requests</h2></div><span class="privacy-lock">Verified team only</span></div><p class="card-description">Service details and scheduled times are shown for open work. Patient name and care details are shared only when you accept an assignment.</p><div id="care-requests" class="booking-list"><div class="loading">Loading care requests…</div></div></section>
+          <section class="content-card" id="credentials"><div class="card-heading"><div><span class="eyebrow">ACCOUNT CHECK</span><h2>Professional credentials</h2></div></div><div id="credential-details" class="credential-details">Loading your account details…</div></section>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="toast-root" aria-live="polite"></div>
+  <script src="/caregiver.js" defer></script>
+</body>
+</html>

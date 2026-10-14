@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#12352d">
+  <title>Nutrix — Care, made more human</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body data-page="auth">
+  <main class="auth-layout">
+    <section class="auth-story">
+      <a class="brand" href="/"><span class="brand-mark">n<span>+</span></span><span>nutrix</span></a>
+      <div class="story-copy">
+        <span class="eyebrow">CARE, MADE MORE HUMAN</span>
+        <h1>Better care begins with feeling connected.</h1>
+        <p>A calmer place to coordinate care, keep the important details close and bring families and caregivers together.</p>
+        <div class="story-proof">
+          <div class="proof-avatars"><span>PN</span><span>KR</span><span>DJ</span></div>
+          <span>Thoughtfully built for the people who care.</span>
+        </div>
+      </div>
+      <div class="story-bottom"><span>Patient-first. Caregiver-ready.</span><span>© Nutrix</span></div>
+      <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+    </section>
+    <section class="auth-main">
+      <div class="auth-card">
+        <div id="auth-forms">
+          <div class="auth-intro"><span class="eyebrow">WELCOME TO NUTRIX</span><h2 id="form-title">Good to have you back.</h2><p id="form-subtitle">Sign in to your secure care workspace.</p></div>
+          <div class="auth-tabs" role="tablist" aria-label="Account access">
+            <button class="auth-tab active" type="button" data-auth-mode="login" role="tab" aria-selected="true">Sign in</button>
+            <button class="auth-tab" type="button" data-auth-mode="register" role="tab" aria-selected="false">Create account</button>
+          </div>
+          <form id="login-form" autocomplete="on">
+            <label class="field"><span>Mobile number</span><input name="phone" type="tel" autocomplete="tel" placeholder="+919876543210" required pattern="\+[1-9][0-9]{7,14}"><small>Include country code and enter digits without spaces, for example +919876543210.</small></label>
+            <label class="field"><span>Password</span><input name="password" type="password" autocomplete="current-password" required></label>
+            <button class="button primary full" type="submit">Sign in <span>→</span></button>
+          </form>
+          <form id="register-form" autocomplete="on" hidden>
+            <label class="field"><span>I’m joining as</span><select name="role" id="signup-role"><option value="patient">Patient / family</option><option value="nurse">Registered nurse</option><option value="caretaker">Caretaker / care assistant</option></select></label>
+            <label class="field"><span>Full name</span><input name="name" autocomplete="name" maxlength="100" required></label>
+            <label class="field"><span>Mobile number</span><input name="phone" type="tel" autocomplete="tel" placeholder="+919876543210" required pattern="\+[1-9][0-9]{7,14}"><small>Use international format with digits only, so we can send your SMS code.</small></label>
+            <div id="professional-fields" class="professional-fields" hidden>
+              <div class="professional-note"><strong>Professional verification</strong><span>Credential details are reviewed before staff can accept care requests.</span></div>
+              <label class="field"><span>Credential type</span><input name="credentialType" placeholder="Nursing council registration / care certificate" maxlength="80"></label>
+              <label class="field"><span>Registration or certificate number</span><input name="credentialId" maxlength="100" autocomplete="off"></label>
+            </div>
+            <label class="field"><span>Create password</span><input name="password" type="password" minlength="10" maxlength="128" autocomplete="new-password" required><small>Use at least 10 characters.</small></label>
+            <label class="consent"><input name="consent" type="checkbox" required><span>I agree to the <a href="/privacy.html">privacy notice</a> and understand health information should only be shared with my care team.</span></label>
+            <button class="button primary full" type="submit">Continue with mobile verification <span>→</span></button>
+          </form>
+          <p class="security-foot"><span>◈</span> Your account is protected with verified mobile sign-in.</p>
+        </div>
+        <div id="otp-panel" hidden>
+          <button class="text-button" id="back-to-signup" type="button">← Back to signup</button>
+          <div class="auth-intro otp-intro"><span class="eyebrow">ONE MORE STEP</span><h2>Check your messages.</h2><p>Enter the six-digit code sent to <strong id="otp-phone"></strong>.</p></div>
+          <form id="otp-form">
+            <label class="field"><span>SMS verification code</span><input name="code" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" placeholder="000000" required></label>
+            <button class="button primary full" type="submit">Verify my number <span>→</span></button>
+          </form>
+          <p class="otp-help">The code expires after five minutes. In local demo mode, it appears in the server terminal.</p>
+        </div>
+        <div id="auth-message" class="message" role="status" aria-live="polite" hidden></div>
+        <div class="demo-notice"><strong>Care privacy matters.</strong> This starter is for development and demonstration. Do not enter real patient information until hosting, access controls and applicable privacy requirements have been reviewed.</div>
+      </div>
+      <footer class="auth-footer"><span>© 2026 Nutrix Care</span><a href="/privacy.html">Privacy & safety</a><a href="mailto:support@nutrix.example">Get help</a></footer>
+    </section>
+  </main>
+  <script src="/auth.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#12352d"><title>My care | Nutrix</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body data-page="patient">
+  <div class="workspace">
+    <aside class="sidebar">
+      <a class="brand" href="/"><span class="brand-mark">n<span>+</span></span><span>nutrix</span></a>
+      <span class="side-label">MY CARE</span>
+      <nav class="side-nav"><a class="selected" href="/patient-dashboard.html"><span>⌂</span> Overview</a><a href="#record"><span>♡</span> My care record</a><a href="#visits"><span>◷</span> Care visits</a></nav>
+      <div class="sidebar-bottom"><div class="care-note"><span class="live-dot"></span> Your care, in one place.<p>Share only what your care team needs.</p></div><div class="sidebar-user"><span class="user-avatar" id="user-avatar">—</span><span><strong id="user-name">Loading…</strong><small>Patient / family</small></span></div></div>
+    </aside>
+    <main class="workspace-main">
+      <header class="workspace-top"><div><span class="crumb">My space</span><span class="crumb-divider">/</span><strong>Care overview</strong></div><button class="button quiet" data-logout>Sign out</button></header>
+      <section class="dashboard-content">
+        <div id="dashboard-message" class="message" role="status" hidden></div>
+        <div class="dashboard-heading"><div><span class="eyebrow">YOUR NUTRIX SPACE</span><h1 id="greeting">Welcome</h1><p>Your care arrangements and personal details, together.</p></div><button class="button primary" id="book-care">＋ Arrange care</button></div>
+        <div class="privacy-banner"><span>◈</span><div><strong>Your information stays in your care circle.</strong><p>Only verified caregivers assigned to a confirmed booking can see your shared care notes.</p></div></div>
+        <section class="summary-grid"><article class="summary-card"><span class="summary-symbol">◷</span><span class="summary-label">CARE BOOKINGS</span><strong id="booking-count">—</strong><small>Your upcoming and past arrangements</small></article><article class="summary-card"><span class="summary-symbol lavender">♧</span><span class="summary-label">CARE TEAM</span><strong id="care-team">—</strong><small>Verified professionals can request work</small></article><article class="summary-card"><span class="summary-symbol peach">✓</span><span class="summary-label">ACCOUNT</span><strong id="account-status">—</strong><small id="account-phone"></small></article></section>
+        <div class="dashboard-grid">
+          <section class="content-card" id="visits"><div class="card-heading"><div><span class="eyebrow">YOUR ARRANGEMENTS</span><h2>Care visits</h2></div><button class="text-button" id="book-care-secondary">Arrange a visit →</button></div><div id="bookings-list" class="booking-list"><div class="loading">Loading your care arrangements…</div></div></section>
+          <section class="content-card profile-card" id="record"><div class="card-heading"><div><span class="eyebrow">YOUR HEALTH DETAILS</span><h2>Care record</h2></div><span class="privacy-lock">◈ Private</span></div><p class="card-description">Share essential information with an assigned, verified caregiver. Keep instructions current and follow your clinician’s advice.</p><form id="profile-form">
+            <label class="field"><span>Health conditions</span><textarea name="conditions" maxlength="1000" placeholder="Add the conditions you want your care team to know about"></textarea></label>
+            <label class="field"><span>Allergies and sensitivities</span><textarea name="allergies" maxlength="500" placeholder="Include medicines, latex or food allergies"></textarea></label>
+            <label class="field"><span>Mobility and support needs</span><textarea name="mobility" maxlength="500" placeholder="For example, transfer support or mobility aids"></textarea></label>
+            <label class="field"><span>Care notes for assigned staff</span><textarea name="care_notes" maxlength="3000" placeholder="Your preferences and practical support notes"></textarea></label>
+            <label class="field"><span>Emergency contact</span><input name="emergency_contact" maxlength="300" placeholder="Name, relationship and phone number"></label>
+            <button class="button primary" type="submit">Save care record</button>
+          </form></section>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="modal-root"></div><div id="toast-root" aria-live="polite"></div>
+  <script src="/patient.js" defer></script>
+</body>
+</html>

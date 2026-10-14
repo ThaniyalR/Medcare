@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Professional review | Nutrix</title><link rel="stylesheet" href="/app.css"></head>
+<body data-page="admin">
+  <main class="admin-page">
+    <a class="brand dark-brand" href="/"><span class="brand-mark">n<span>+</span></span><span>nutrix</span></a>
+    <div class="admin-card"><span class="eyebrow">CONTROLLED ACCESS</span><h1>Professional verification</h1><p class="muted">Review nurse and caretaker credentials using your configured administrator key. Confirm professional registration independently before approving access.</p>
+      <form id="admin-key-form"><label class="field"><span>Administrator review key</span><input type="password" name="key" autocomplete="current-password" required></label><button class="button primary" type="submit">Load pending reviews</button></form>
+      <div id="admin-message" class="message" role="status" hidden></div><div id="review-list" class="review-list"></div>
+      <p class="admin-warning">This page is an administrative convenience, not a credential-verification service. Check the issuing professional body before approving an account.</p>
+    </div>
+  </main>
+  <script src="/admin.js" defer></script>
+</body>
+</html>
